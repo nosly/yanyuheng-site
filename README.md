@@ -183,7 +183,16 @@ https://yanyuheng-dpue4x7zoo1d.edgeone.dev/
 ./make-dist.sh
 ```
 
-它清空并重建 `dist/`，里面只有三样：`index.html`、`lun-guojia.html`、`assets/`（约 8.7 MB）。然后把 **`dist` 文件夹里的内容**拖进上传框——不要连 `dist` 这层一起传。
+它清空并重建 `dist/`，里面只有三样：`index.html`、`lun-guojia.html`、`assets/`（约 8.7 MB）。
+
+上传时按上传器给的方式分两种：
+
+| 上传器 | 怎么做 |
+|---|---|
+| 点 **「选择文件夹」** | 选 **`dist` 本身**。选中的文件夹就是站点根，`dist/index.html` 会变成 `/index.html`。 |
+| **拖拽** | 拖 **`dist` 里面**的三样，别拖 `dist` 这层——有些上传器会把拖进去的文件夹当成子目录，结果站点变成 `/dist/index.html`。 |
+
+**上传后验一下**：打开给你的预览地址，首页应该是 `https://…/`，不是 `https://…/dist/`。若是后者，说明多套了一层，重传即可。
 
 `dist/` 已在 `.gitignore` 里，不会进仓库。
 

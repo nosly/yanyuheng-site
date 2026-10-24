@@ -28,4 +28,7 @@ ls -1 ./dist
 echo "--- 体积 ---"
 du -sh ./dist
 echo
-echo "上传时把 dist 文件夹里的内容拖进去，不要连 dist 这层一起传。"
+echo "上传方式："
+echo "  · 点「选择文件夹」→ 选 dist 本身（dist 就是站点根）。"
+echo "  · 拖拽上传     → 拖 dist 里面的三样，别拖 dist 这层。"
+echo "上传后确认首页地址是 /index.html，不是 /dist/index.html。"
