@@ -99,8 +99,21 @@ unset PYTHONHOME PYTHONPATH
 
 **一、在 GitHub 或 Gitee 建一个空仓库**
 
-- 名字随意，例如 `yanyuheng-site`；公开私有都行（EdgeOne 支持私有仓库授权）。
+- 名字用 `yanyuheng-site`，**大小写与连字符要和 `git remote` 里的完全一致**。
+- **选 Public（公开）**：站点本来就是要公开的；私有仓库会让 EdgeOne 多一步授权，也容易在推送时踩认证的坑。
 - **不要**勾选「添加 README / .gitignore / license」——会让首次推送冲突。
+
+> **认证**：GitHub 早已不接受账号密码。HTTPS 推送时用户名填账号，**密码位置填 Personal Access Token**（Settings → Developer settings → Personal access tokens，勾 `repo`）。本机没有存过 GitHub 凭据，第一次推送会要你填一次，之后由 Windows 凭据管理器记住。
+>
+> 若想省掉 token 这一环，装 GitHub CLI 一条命令解决：
+>
+> ```bash
+> winget install --id GitHub.cli
+> gh auth login                                   # 走浏览器登录
+> gh repo create yanyuheng-site --public --source=. --remote=origin --push
+> ```
+>
+> 这一串会同时建仓库、加 remote、推送，省掉后面两步。
 
 **二、本地推上去**（仓库已初始化，首个提交是 `aeecf07`）
 
