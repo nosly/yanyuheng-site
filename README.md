@@ -103,7 +103,14 @@ unset PYTHONHOME PYTHONPATH
 - **选 Public（公开）**：站点本来就是要公开的；私有仓库会让 EdgeOne 多一步授权，也容易在推送时踩认证的坑。
 - **不要**勾选「添加 README / .gitignore / license」——会让首次推送冲突。
 
-> **认证**：GitHub 早已不接受账号密码。HTTPS 推送时用户名填账号，**密码位置填 Personal Access Token**（Settings → Developer settings → Personal access tokens，勾 `repo`）。本机没有存过 GitHub 凭据，第一次推送会要你填一次，之后由 Windows 凭据管理器记住。
+> **认证**：GitHub 早已不接受账号密码。HTTPS 推送时用户名填账号，**密码位置填 Personal Access Token**。本机没有存过 GitHub 凭据，第一次推送会要你填一次，之后由 Windows 凭据管理器记住。
+>
+> **别在菜单里找「Developer settings」**，直接开这两个网址（菜单里它在 Settings 左侧栏最底部，要滚到底才看得见，而且必须是**账号**的 Settings，不是仓库的 Settings）：
+>
+> - 建仓库：`https://github.com/new`
+> - 建 token：`https://github.com/settings/tokens/new`
+>
+> token 的设置：Note 随便写（如 `yanyuheng-site`）、Expiration 选 90 天、Scopes **只勾 `repo`**，然后 Generate，**生成后立刻复制**（只显示一次）。
 >
 > 若想省掉 token 这一环，装 GitHub CLI 一条命令解决：
 >
