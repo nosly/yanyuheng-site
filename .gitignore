@@ -5,6 +5,7 @@
 plans/
 tools/
 .workbuddy-ai/
+dist/
 
 __pycache__/
 *.pyc

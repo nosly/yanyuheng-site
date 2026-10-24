@@ -172,13 +172,22 @@ https://yanyuheng-dpue4x7zoo1d.edgeone.dev/
 
 ### 若一定要用「直接上传」
 
-把要发布的四样单独拷到一个空文件夹再上传，不要整个 `site` 目录打包：
+**不要用软链接。** 把 `index.html`、`lun-guojia.html`、`assets/` 软链到一个 `upload/` 目录再上传，看起来聪明，实际上会栽：
 
+- 浏览器的文件夹上传器**通常不跟随符号链接**，而失败是**静默**的——`assets/` 被跳过，站点上线后没有样式、没有图、没有字体，你要过一阵才发现。
+- Windows 上 `mklink /D` 还要管理员权限或开发者模式；junction 虽然免权限，但上传器认不认，各家不一样。
+
+用这个脚本做**真拷贝**，慢一秒，但不会骗人：
+
+```bash
+./make-dist.sh
 ```
-index.html
-lun-guojia.html
-assets/
-```
+
+它清空并重建 `dist/`，里面只有三样：`index.html`、`lun-guojia.html`、`assets/`（约 8.7 MB）。然后把 **`dist` 文件夹里的内容**拖进上传框——不要连 `dist` 这层一起传。
+
+`dist/` 已在 `.gitignore` 里，不会进仓库。
+
+> **但要想清楚：直接上传没有自动重建。** 家里改一个字，你得记得重跑脚本、重传一次。Git 那条路是 `git push` 一次，EdgeOne 自己重建，还有历史可回滚——同样的力气，多一点东西。**能用 Git 就别用直接上传。**
 
 ---
 
