@@ -1,0 +1,12 @@
+# 这个仓库只放「要发布的站点」。
+# 工作材料留在本地，不进仓库，也不会被 EdgeOne 部署出去。
+
+.venv/
+plans/
+tools/
+.workbuddy-ai/
+
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
