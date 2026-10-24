@@ -92,6 +92,41 @@
     a.removeAttribute("data-b");
   });
 
+  /* ── audio ────────────────────────────────────────────
+     No file yet → the browser fires an error and the whole
+     block removes itself. Drop the mp3 in and it appears. */
+  document.querySelectorAll("figure.listen").forEach(function (fig) {
+    var audio = fig.querySelector("audio");
+    var btn = fig.querySelector("button");
+    if (!audio || !btn) return;
+
+    function hide() { fig.hidden = true; }
+
+    audio.addEventListener("error", hide);
+    if (audio.error) hide();
+
+    btn.addEventListener("click", function () {
+      if (audio.paused) {
+        audio.play().catch(hide);
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener("play", function () {
+      btn.textContent = "❙❙";
+      btn.setAttribute("aria-label", "暂停录音");
+    });
+    audio.addEventListener("pause", function () {
+      btn.textContent = "▶";
+      btn.setAttribute("aria-label", "播放录音");
+    });
+    audio.addEventListener("ended", function () {
+      btn.textContent = "▶";
+      btn.setAttribute("aria-label", "播放录音");
+    });
+  });
+
   /* ── nav: mark current section ────────────────────── */
   var links = Array.prototype.slice.call(
     document.querySelectorAll(".masthead nav a[href^='#']")

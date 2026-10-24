@@ -464,8 +464,55 @@ details[open] summary::before { transform: rotate(45deg); }
   letter-spacing: .06em;
 }
 
-.reading .source {
-  font-size: .76rem;
+/* ── audio ────────────────────────────────────────────── */
+
+.listen {
+  display: flex;
+  align-items: center;
+  gap: .95rem;
+  margin: 2rem 0 0;
+  padding: .8rem .95rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: rgba(35, 33, 30, .022);
+}
+
+.listen[hidden] { display: none; }
+
+.listen button {
+  width: 2.15rem;
+  height: 2.15rem;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--ink-3);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--sans, system-ui), sans-serif;
+  font-size: .72rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: border-color .25s, color .25s;
+}
+.listen button:hover { border-color: var(--ink); }
+
+.listen .meta {
+  font-size: .8rem;
+  color: var(--ink-2);
+  letter-spacing: .1em;
+  line-height: 1.7;
+}
+
+.listen .note {
+  display: block;
+  font-size: .72rem;
+  color: var(--ink-3);
+  letter-spacing: .02em;
+  margin-top: .1rem;
+}
+
+.reading .source {  font-size: .76rem;
   color: var(--ink-3);
   letter-spacing: .04em;
   margin-top: 1.8rem;
