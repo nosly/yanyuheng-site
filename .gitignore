@@ -7,6 +7,10 @@ tools/
 .workbuddy-ai/
 dist/
 
+# 29 个成片 mp4，共约 386 MB。原样入库会撑爆仓库、也会拖垮部署。
+# 真要上线，得先压到每部几 MB 并只取少数几部，放进 assets/video/。
+videos/
+
 __pycache__/
 *.pyc
 .DS_Store
